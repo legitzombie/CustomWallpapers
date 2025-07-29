@@ -1,33 +1,41 @@
 @echo off
 setlocal
 
-python --version >nul 2>&1
-if %errorlevel%==0 (
-    goto :end
+set "python_exe=%ProgramFiles%\Python312\python.exe"
+if exist "%python_exe%" (
+    goto :done
 )
 
-echo [INFO] Python not found. Downloading...
+echo [INFO] Python not found. Downloading installer...
 
 set "temp_installer=%TEMP%\python_installer.exe"
 curl -o "%temp_installer%" https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe
 
 if exist "%temp_installer%" (
-    "%temp_installer%" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
+    echo [INFO] Installing Python...
+    start /wait "" "%temp_installer%" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
 ) else (
     echo [ERROR] Failed to download Python installer.
-    pause
     exit /b 1
 )
 
-echo [INFO] Installing Python...
-timeout /t 10 >nul
+set "retries=30"
+set /a count=0
 
-python --version >nul 2>&1
-if %errorlevel%==0 (
-    echo [SUCCESS] Python installed successfully.
-) else (
-    echo [FAIL] Python install may have failed. Please install manually.
+:check_python
+if exist "%python_exe%" (
+    echo [SUCCESS] Python installed at "%python_exe%"
+    "%python_exe%" --version
+    goto :done
 )
+timeout /t 2 >nul
+set /a count+=1
+if %count% LSS %retries% goto :check_python
 
-:end
-exit /b
+echo [FAIL] Python install timed out or failed.
+exit /b 1
+
+:done
+echo [INFO] Python is ready.
+endlocal
+exit /b 0
