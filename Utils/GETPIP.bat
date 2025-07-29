@@ -26,6 +26,7 @@ timeout /t 5 >nul
 pip --version >nul 2>&1
 if %errorlevel%==0 (
     echo [SUCCESS] pip installed successfully.
+	
 ) else (
     echo [FAIL] pip install may have failed. Please install manually.
 )
