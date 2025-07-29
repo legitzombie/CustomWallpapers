@@ -11,7 +11,7 @@ if %errorlevel%==0 (
 
 	set "dotnet_version=8.0"
 	set "dotnet_installer_url=https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.412/dotnet-sdk-8.0.412-win-x64.exe"
-	set "installer_name=dotnet-sdk-installer.exe"
+	set "installer_name=dotnet-sdk-8.0.412-win-x64.exe"
 
 	echo [INFO] Downloading .NET SDK installer...
 	powershell -Command "Invoke-WebRequest -Uri '%dotnet_installer_url%' -OutFile '%installer_name%'" >nul 2>&1
