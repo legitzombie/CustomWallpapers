@@ -8,12 +8,12 @@ if %errorlevel%==0 (
 
 echo [INFO] VC++ Redist not found. Downloading latest x64 runtime...
 
-set "vc_redist=%TEMP%\vc_redist.x64.exe"
+for %%i in ("%TEMP%\vc_redist.x64.exe") do set "vc_redist=%%~fi"
 
 curl -L -o "%vc_redist%" https://aka.ms/vs/17/release/vc_redist.x64.exe
 
 if exist "%vc_redist%" (
-    echo [INFO] Installing Visual C++ Redistributable...  (may prompt for UAC)...
+    echo [INFO] Installing Visual C++ Redistributable...
     "%vc_redist%" /install /quiet /norestart
     timeout /t 5 >nul
 ) else (
@@ -30,4 +30,4 @@ if %errorlevel%==0 (
 )
 
 :end
-exit /b
+exit /b 0
