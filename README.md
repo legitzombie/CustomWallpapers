@@ -26,4 +26,4 @@ Requires Wallpaper Browser.
 
 7. Once that's done, re-launch Run.bat.
 
-
+8. That's it, you can now Run.bat whenever you want to update your wallpaper gallery
