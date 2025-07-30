@@ -16,14 +16,13 @@ curl -o "%temp_installer%" https://www.python.org/ftp/python/3.12.3/python-3.12.
 echo [INFO] Installing Python... (may prompt for UAC)...
 "%temp_installer%" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
 
-timeout /t 5 >nul
-
 echo [SUCCESS] Python installed at "%python_exe%"
 goto :done
 
 :done
 echo [INFO] Python is ready.
-start "" cmd /k ""%runbat%""
+echo [SUCCESS] Please re-launch this terminal to complete the installation.
+pause
 exit /b 123
 
 endlocal

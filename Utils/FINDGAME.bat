@@ -12,6 +12,7 @@ if !errorlevel! == 0 goto :found
 
 if not exist "%libraryFoldersFile%" (
     echo [ERROR] Cannot find Steam library...
+	echo [SUCCESS] You will need to manually drag the archive folder into /Cyberpunk 2077 game folder...
     pause
     exit /b 1
 )
