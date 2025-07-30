@@ -31,9 +31,7 @@ for /f "usebackq tokens=*" %%l in ("%libraryFoldersFile%") do (
     )
 )
 
-echo [FAIL] Cyberpunk 2077 not found in any Steam library.
-echo [FAIL] Move the archive folder to the cyberpunk 2077 folder.
-pause
+
 exit /b 1
 
 :checkFolder
