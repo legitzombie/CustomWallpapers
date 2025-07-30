@@ -10,7 +10,7 @@ for %%i in ("%script_path%\..") do set "temp_path=%%~fi\temp\archive\base\custom
 
 echo [INFO] Converting pngs to xbm... This can be a slow process...
 
-%cli_path% import -p %wallpaper_path% -o "%temp_path%"
+"%cli_path%" import -p "%wallpaper_path%" -o "%temp_path%"
 
 
 endlocal
