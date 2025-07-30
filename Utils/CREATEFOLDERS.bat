@@ -5,7 +5,7 @@ set "script_path=%~dp0"
 
 for %%i in ("%script_path%\..") do set "temp_path=%%~fi\temp"
 
-if not exist %temp_path% (
+if not exist "%temp_path%" (
 	mkdir "%temp_path%"
 	mkdir "%temp_path%\images"
 	mkdir "%temp_path%\raw\base\customwallpapers"
