@@ -12,7 +12,7 @@ set "temp_installer=%TEMP%\python_installer.exe"
 curl -o "%temp_installer%" https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe
 
 if exist "%temp_installer%" (
-    echo [INFO] Installing Python...
+    echo [INFO] Installing Python... (may prompt for UAC)...
     start /wait "" "%temp_installer%" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
 ) else (
     echo [ERROR] Failed to download Python installer.
@@ -25,7 +25,6 @@ set /a count=0
 :check_python
 if exist "%python_exe%" (
     echo [SUCCESS] Python installed at "%python_exe%"
-    "%python_exe%" --version
     goto :done
 )
 timeout /t 2 >nul
@@ -37,5 +36,8 @@ exit /b 1
 
 :done
 echo [INFO] Python is ready.
+echo [INFO] Restarting terminal...
+start "" cmd /k ""%runbat%""
+exit /b
 endlocal
 exit /b 0
