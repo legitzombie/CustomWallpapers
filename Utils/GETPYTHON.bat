@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal enabledelayedexpansion
 
 set "python_exe=%ProgramFiles%\Python312\python.exe"
 if exist "%python_exe%" (
@@ -29,16 +29,15 @@ if exist "%python_exe%" (
 )
 timeout /t 2 >nul
 set /a count+=1
-if %count% LSS %retries% goto :check_python
+if !count! LSS !retries! goto :check_python
 
 echo [FAIL] Python install timed out or failed.
 exit /b 1
 
 :done
 echo [INFO] Python is ready.
-echo [WARNING] The command prompt needs to be restarted... 
-pause
 start "" cmd /k ""%runbat%""
 exit /b 123
+
 endlocal
 exit /b 0
