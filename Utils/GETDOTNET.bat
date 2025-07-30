@@ -11,7 +11,7 @@ if exist "%sdk_path%" (
 echo [INFO] .NET SDK not found. Downloading installer...
 
 set "installer_name=%TEMP%\dotnet-sdk-8.0.412-win-x64.exe"
-set "dotnet_installer_url=https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.412-windows-x64-installer"
+set "dotnet_installer_url=https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.412/dotnet-sdk-8.0.412-win-x64.exe"
 
 curl -L -o "%installer_name%" "%dotnet_installer_url%"
 
@@ -23,13 +23,22 @@ if not exist "%installer_name%" (
 echo [INFO] Installing .NET SDK... (may prompt for UAC)...
 start /wait "" "%installer_name%" /install /quiet /norestart
 
-timeout /t 5 >nul
-dotnet --list-sdks >nul 2>nul
-if errorlevel 1 (
+set "retries=30"
+set /a count=0
+
+:check_dotnet
+if exist "%sdk_path%" (
     echo [SUCCESS] .NET SDK installed successfully!
     del "%installer_name%"
     goto :done
-) 
+)
+
+timeout /t 2 >nul
+set /a count+=1
+if %count% LSS %retries% goto :check_dotnet
+
+echo [FAIL] .NET SDK install timed out or failed.
+exit /b 1
 
 :done
 echo [INFO] .NET is ready.
