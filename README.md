@@ -26,6 +26,4 @@ Requires Wallpaper Browser.
 
 7. Once that's done, re-launch Run.bat.
 
-<img width="721" height="185" alt="image" src="https://github.com/user-attachments/assets/a340605d-0de1-429d-b3b7-b1a2d93a955c" />
-
 
