@@ -14,7 +14,8 @@ curl -L -o "%vc_redist%" https://aka.ms/vs/17/release/vc_redist.x64.exe
 
 if exist "%vc_redist%" (
     echo [INFO] Installing Visual C++ Redistributable...  (may prompt for UAC)...
-    start /wait "" "%vc_redist%" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
+    "%vc_redist%" /install /quiet /norestart
+    timeout /t 5 >nul
 ) else (
     echo [ERROR] Failed to download VC++ redist.
     pause
