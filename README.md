@@ -4,6 +4,14 @@ Utility to let you add your own wallpapers into Cyberpunk 2077.
 
 Requires Wallpaper Browser.
 
+# OS Compatible
+
+Win11 - Fresh Install / Dirty Install ✅
+
+Win10 - Probably works ✅
+
+Anything else - ❌
+
 # HOW TO INSTALL
 
 1. Click on: <> Code -> Download ZIP
@@ -27,11 +35,3 @@ Requires Wallpaper Browser.
 7. Once that's done, re-launch Run.bat.
 
 8. That's it, you can now Run.bat whenever you want to update your wallpaper gallery
-
-# OS Compatible
-
-Win11 - Fresh Install / Dirty Install ✅
-
-Win10 - Probably works ?
-
-Anything else - ❌
