@@ -9,7 +9,7 @@ if not errorlevel 1 (
 echo [INFO] .NET SDK not found. Attempting to download and install...
 
 set "dotnet_version=8.0"
-set "dotnet_installer_url=https://download.visualstudio.microsoft.com/download/pr/2e6ec747-04b2-47b8-bbb5-2ac24e6370b7/2c64a7c64824d94a22f254f7cdb06fd2/dotnet-sdk-8.0.412-win-x64.exe"
+set "dotnet_installer_url=https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.412-windows-x64-installer"
 set "installer_name=dotnet-sdk-8.0.412-win-x64.exe"
 
 echo [INFO] Downloading .NET SDK installer...
