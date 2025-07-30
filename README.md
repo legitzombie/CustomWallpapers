@@ -22,8 +22,6 @@ Requires Wallpaper Browser.
 
 6. Some of these things will require UAC, make sure to click Yes
 
-<img width="392" height="48" alt="image" src="https://github.com/user-attachments/assets/73816c20-d72f-46ec-9be9-590a6c65dc4d" />
-
 <img width="455" height="394" alt="image" src="https://github.com/user-attachments/assets/5968df0a-97f5-425c-a7aa-f9ff33f856b3" />
 
 7. Once that's done, re-launch Run.bat.
