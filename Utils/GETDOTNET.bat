@@ -31,6 +31,16 @@ if exist "%sdk_path%" (
     echo [SUCCESS] .NET SDK installed successfully!
     del "%installer_name%"
     goto :done
+)else (
+	cls
+	echo [INFO] Installing .NET SDK... (may prompt for UAC)...
+	set "line="
+
+	for /L %%i in (1,1,%count%) do (
+		set "line=!line!*"
+	)
+
+	echo Progress: !line!
 )
 
 timeout /t 2 >nul
@@ -42,7 +52,6 @@ exit /b 1
 
 :done
 echo [INFO] .NET is ready.
-echo [INFO] Restarting terminal and running Run.bat...
 start "" cmd /k ""%runbat%""
 exit /b 123
 

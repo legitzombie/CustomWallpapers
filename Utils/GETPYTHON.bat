@@ -1,23 +1,20 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "python_exe=%ProgramFiles%\Python312\python.exe"
+set "python_exe=%LOCALAPPDATA%\Programs\Python\Python312\python.exe"
 if exist "%python_exe%" (
     exit /b 0
 )
 
 echo [INFO] Python not found. Downloading installer...
 
-set "temp_installer=%TEMP%\python_installer.exe"
+for %%i in ("%TEMP%\python_installer.exe") do set "temp_installer=%%~fi"
 curl -o "%temp_installer%" https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe
 
-if exist "%temp_installer%" (
-    echo [INFO] Installing Python... (may prompt for UAC)...
-    start /wait "" "%temp_installer%" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
-) else (
-    echo [ERROR] Failed to download Python installer.
-    exit /b 1
-)
+
+echo [INFO] Installing Python... (may prompt for UAC)...
+"%temp_installer%" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
+
 
 set "retries=30"
 set /a count=0
@@ -26,6 +23,16 @@ set /a count=0
 if exist "%python_exe%" (
     echo [SUCCESS] Python installed at "%python_exe%"
     goto :done
+)else (
+	cls
+	echo [INFO] Installing Python... (may prompt for UAC)...
+	set "line="
+
+	for /L %%i in (1,1,%count%) do (
+		set "line=!line!*"
+	)
+
+	echo Progress: !line!
 )
 timeout /t 2 >nul
 set /a count+=1
