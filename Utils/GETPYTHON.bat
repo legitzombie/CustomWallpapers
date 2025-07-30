@@ -15,8 +15,6 @@ curl -o "%temp_installer%" https://www.python.org/ftp/python/3.12.3/python-3.12.
 
 echo [INFO] Installing Python... (may prompt for UAC)...
 "%temp_installer%" /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
-
-echo [SUCCESS] Python installed at "%python_exe%"
 goto :done
 
 :done

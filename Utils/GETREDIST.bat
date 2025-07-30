@@ -13,7 +13,7 @@ for %%i in ("%TEMP%\vc_redist.x64.exe") do set "vc_redist=%%~fi"
 curl -L -o "%vc_redist%" https://aka.ms/vs/17/release/vc_redist.x64.exe
 
 if exist "%vc_redist%" (
-    echo [INFO] Installing Visual C++ Redistributable...
+    echo [INFO] Installing Visual C++ Redistributable... (may prompt for UAC)...
     "%vc_redist%" /install /quiet /norestart
     timeout /t 5 >nul
 ) else (
