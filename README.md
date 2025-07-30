@@ -31,5 +31,7 @@ Requires Wallpaper Browser.
 # OS Compatible
 
 Win11 - Fresh Install / Dirty Install ✅
+
 Win10 - Probably works ?
+
 Anything else - ❌
