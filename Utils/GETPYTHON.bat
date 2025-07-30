@@ -3,7 +3,7 @@ setlocal
 
 set "python_exe=%ProgramFiles%\Python312\python.exe"
 if exist "%python_exe%" (
-    goto :done
+    goto :install
 )
 
 echo [INFO] Python not found. Downloading installer...
@@ -40,4 +40,6 @@ echo [INFO] Restarting terminal...
 start "" cmd /k ""%runbat%""
 exit /b
 endlocal
+
+:install
 exit /b 0
