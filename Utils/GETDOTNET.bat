@@ -44,7 +44,7 @@ exit /b 1
 echo [INFO] .NET is ready.
 echo [INFO] Restarting terminal and running Run.bat...
 start "" cmd /k ""%runbat%""
-exit /b
+exit /b 123
 
 :install
 exit /b 0
