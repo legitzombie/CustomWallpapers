@@ -7,11 +7,17 @@ call Utils/GETREDIST.bat
 
 call Utils/GETDOTNET.bat
 
+if %errorlevel%==123 exit
+
 call Utils/GETPYTHON.bat
+
+if %errorlevel%==123 exit
 
 call Utils/GETPIP.bat
 
 call Utils/GETPILLOW.bat
+
+call Utils/GETREQUESTS.bat
 
 call Utils/GETCLI.bat
 
