@@ -3,10 +3,10 @@ setlocal enabledelayedexpansion
 
 set "runbat=%~dp0..\Run.bat"
 
-set "python_exe=%ProgramFiles%\Python312\python.exe"
-if exist "%python_exe%" (
+python --version >nul 2>&1
+if %errorlevel%==0 (
     exit /b 0
-)
+) 
 
 echo [INFO] Python not found. Downloading installer...
 
